@@ -26,3 +26,5 @@ class SistemaOperacional(object):
                 self.processos.remove(proc)
                 break
     
+    def processar(self,pid):
+        pass
