@@ -1,7 +1,7 @@
 __author__ = 'douglas'
 
-from .scheduler import Scheduler
-from .operating_system import OperatingSystem
+from .escalonador import Escalonador
+from .sistema import SistemaOperacional
 
 
 ###########################################
@@ -11,6 +11,6 @@ from .operating_system import OperatingSystem
 
 if __name__ == 'main':
 
-    escalonador = Scheduler()
-    operating_system = OperatingSystem(escalonador)
+    escalonador = Escalonador()
+    so = SistemaOperacional(escalonador)
 
