@@ -1,30 +1,27 @@
 __author__ = 'douglas'
 
 from .processo import Processo
-
+from time      import time
 
 class SistemaOperacional(object):
     """
-        Define a class to represents an operating system object.
+        Define a classe que representa um sistema operacional.
     """
-    quantum = 4
-    def __init__(self,escalonador):
-        self.processos = []
-        self.escalonador = escalonador
+
+    def __init__(self, escalonador, quantum):
+        self.escalonador          = escalonador
 
     def criar_processo(self, dados):
-        """Method to create any process to be executed on the operating system."""
-        proc = Processo()
-        proc.dados = dados
-        proc.codigo = len(self.processos) + 1
-        self.processos.append(proc)
-        return "Processo criado"
+        """Methodo para criar qualquer processo a ser executedo
+           no so."""
+        tempo           = time()
+        pid             = len(self.escalonador.processos) + 1
+        processo        = Processo(tempo, pid)
+        self.escalonador.processos.append(processo)
 
-    def matar_processo(self, pid):
-        for proc in self.processos:
-            if proc.pid == pid:
-                self.processos.remove(proc)
+    def remover_processo(self, processo):
+        processos = self.escalonador.processos
+        for indice,proc in enumerate(processos):
+            if proc.pid == processo.pid:
+                processos.pop(indice)
                 break
-    
-    def processar(self,pid):
-        pass
