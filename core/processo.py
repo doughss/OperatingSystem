@@ -25,7 +25,18 @@ class Processo(object):
         self.tempo_executado    = 0
 
     def __repr__(self):
+        """
+            Representação de um objeto em uma string
+        """
         string  = "** Processo id - {0} // ".format(self.pid)
         string += "tempo de execucao {0} // ".format(self.tempo_do_processo)
         string += "tempo executado {0} **".format(self.tempo_executado)
         return string
+
+
+    def status_do_processo(self):
+        """
+            Metodo para retorno o status como string.
+        """
+        status = {0:"Pronto", 1:"Executando", 2:"Bloqueado"}
+        return status[self.estado]

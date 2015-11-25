@@ -19,7 +19,7 @@ class SistemaOperacional(object):
             Construtor da classe SistemaOperacional.
         """
         self.processador = Processador()
-        self.escalonador = Escalonador_Fifo(self.processador)
+        self.escalonador = Escalonador_Round_Robin(self.processador, 5)
 
     def criar_processo(self, tempo_do_processo):
         """
