@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from time import time, sleep
 
 class Processo(object):
@@ -14,10 +16,16 @@ class Processo(object):
                             processo foi executado até determinado momento.
     """
 
-    def __init__(self,tempo,pid):
+    def __init__(self,pid,tempo):
         self.pid                = pid
         self.estado             = 0
         self.tempo_do_processo  = tempo
         self.tempo_inicio       = 0
         self.tempo_em_execucao  = 0
         self.tempo_executado    = 0
+
+    def __repr__(self):
+        string  = "** Processo id - {0} // ".format(self.pid)
+        string += "tempo de execucao {0} // ".format(self.tempo_do_processo)
+        string += "tempo executado {0} **".format(self.tempo_executado)
+        return string
