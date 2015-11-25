@@ -10,7 +10,5 @@ from .sistema import SistemaOperacional
 
 
 if __name__ == 'main':
-
-    escalonador = Escalonador()
-    so = SistemaOperacional(escalonador)
-
+    so = SistemaOperacional()
+    so.start_sistema_operacional()
