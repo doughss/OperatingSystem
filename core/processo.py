@@ -16,13 +16,14 @@ class Processo(object):
                             processo foi executado até determinado momento.
     """
 
-    def __init__(self,pid,tempo):
+    def __init__(self,pid,tempo,tamanho):
         self.pid                = pid
         self.estado             = 0
         self.tempo_do_processo  = tempo
         self.tempo_inicio       = 0
         self.tempo_em_execucao  = 0
         self.tempo_executado    = 0
+        self.tamanho            = tamanho
 
     def __repr__(self):
         """
