@@ -15,7 +15,13 @@ if __name__ == '__main__':
     memoria = Memoria()
     memoria.criar_paginas(10,20,5)
 
-    so = SistemaOperacional(memoria)
+    escalonamento={0:"Escalonamento RoundRobin" , 1:"Escalonaemnto Fifo"}
+    escalonador = -1
+    while escalonador!=0 and escalonador!=1:
+        escalonador = int(raw_input("Deseja Escalonamento RoundRobin(0) ou Fifo(1)? "))
+    print(escalonamento[escalonador])
+
+    so = SistemaOperacional(memoria,escalonador)
 
     so.criar_processo(14,10)
     so.criar_processo(15,11)
