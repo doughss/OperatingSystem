@@ -10,9 +10,10 @@ class Escalonador_Fifo(object):
     """
 
 
-    def __init__(self, processador):
-        self.processador          = processador
-        self.processos            = []
+    def __init__(self, processador, memoria):
+        self.memoria     = memoria
+        self.processador = processador
+        self.processos   = []
 
 
     def escalonar_processos(self):
@@ -67,10 +68,11 @@ class Escalonador_Round_Robin(object):
     """
 
 
-    def __init__(self, processador, quantum):
-        self.processador          = processador
-        self.processos            = []
-        self.quantum              = quantum
+    def __init__(self, processador, memoria, quantum):
+        self.memoria     = memoria
+        self.processador = processador
+        self.processos   = []
+        self.quantum     = quantum
 
 
     def escalonar_processos(self):
