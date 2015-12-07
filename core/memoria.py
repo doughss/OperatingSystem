@@ -24,3 +24,10 @@ class Memoria(object):
             pagina = Pagina(tamanho,numero)
             self.paginas.append(pagina)
             numero +=1
+
+    def tem_processos_executando(self):
+        """Método para checar se a memoria possui algum processo em execução"""
+        for  pagina in self.paginas:
+            if pagina.processo:
+                return True
+        return False

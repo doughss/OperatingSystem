@@ -36,21 +36,39 @@ class Escalonador_Fifo(object):
                 segundos += 1
             self.finaliza_processo(processo)
 
-    def excecutar_processo(self):
+
+    def excecutar_processos(self):
         """
-            Método que pega o primeiro processo da fila de processos, configura
-            informções de execução do processo e o coloca no processador.
+            Método que pega o primeiro processo da fila de processos, e
+            adiciona um processo na memoria através do metodo first fit
+            se o algoritmo first fit alocar o processo configura
+            informções de execução do processo caso contrário devolve o processo para
+            a lista deprocessos do escalonador.
         """
         processo              = self.processos.pop(0)
-        processo.estado       = 1
-        processo.tempo_inicio = int(time())
-        self.processador.processo_em_execucao = processo
+        processo_alocado      = self.first_fit(processo)
+        if processo:
+            processo.estado       = 1
+            processo.tempo_inicio = int(time())
+        else:
+            self.processos.append(processo)
+
+
+    def first_fit(self,processo):
+        """Método first fit para alocar porcesso na Memória."""
+        for pagina in self.memoria.paginas:
+            if not pagina.processo and pagina.tamanho >= processo.tamanho:
+                pagina.processo = processo
+                return True
+        return False
+
 
     def processo_em_execucao(self):
         """
             Pega o atual processo em execução no processador
         """
         return self.processador.processo_em_execucao
+
 
     def finaliza_processo(self, processo):
         """
@@ -100,6 +118,7 @@ class Escalonador_Round_Robin(object):
                 processo.estado = 0
                 self.processos.append(processo)
 
+
     def excecutar_processo(self):
         """
             Método que pega o primeiro processo da fila de processos, configura
@@ -112,11 +131,13 @@ class Escalonador_Round_Robin(object):
             processo.tempo_inicio = int(time())
         self.processador.processo_em_execucao = processo
 
+
     def processo_em_execucao(self):
         """
             Pega o atual processo em execução no processador
         """
         return self.processador.processo_em_execucao
+
 
     def finaliza_processo(self, processo):
         """

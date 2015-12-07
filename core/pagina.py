@@ -6,7 +6,6 @@ class Pagina(object):
         self.numero   = numero
         self.tamanho  = tamanho
         self.processo = None
-        self.alocado  = False
 
     def __repr__(self):
         """

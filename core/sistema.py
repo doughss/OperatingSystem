@@ -39,7 +39,7 @@ class SistemaOperacional(object):
             Método de start do Sistema Operacional
         """
         print "Sistema Operacional em execucao"
-        while self.escalonador.processos :
+        while self.escalonador.processos and self.memoria.tem_processos_executando():
             print self.tabela_de_processos()
             self.escalonador.escalonar_processos()
         print "Sistema Operacional finalizado"
