@@ -14,12 +14,15 @@ class SistemaOperacional(object):
         Define a classe que representa um sistema operacional.
     """
 
-    def __init__(self):
+    def __init__(self,escalonador,quantum=None):
         """
             Construtor da classe SistemaOperacional.
         """
         self.processador = Processador()
-        self.escalonador = Escalonador_Round_Robin(self.processador, 5)
+        if escalonador==1:
+            self.escalonador = Escalonador_Round_Robin(self.processador, quantum)
+        elif escalonador==0:
+            self.escalonador = Escalonador_Fifo(self.processador)
 
     def criar_processo(self, tempo_do_processo):
         """
